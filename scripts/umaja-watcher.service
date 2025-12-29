@@ -1,0 +1,18 @@
+[Unit]
+Description=Umaja Guardian (Sacred-Turbo-Modus Watcher)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/umaja-watcher
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=umaja-watcher
+
+# Environment variables
+Environment="SACRED_TURBO_PID=14430"
+
+[Install]
+WantedBy=multi-user.target

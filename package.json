@@ -1,19 +1,31 @@
 {
   "name": "umaja-v2",
   "private": true,
-  "version": "0.0.0",
+  "version": "4.2.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build && tsc",
+    "build:lib": "tsc",
+    "preview": "vite preview",
+    "start:server": "node --loader ts-node/esm server/index.ts",
+    "dev:server": "ts-node server/index.ts"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "winston": "^3.19.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.3",
     "@vitejs/plugin-react": "^4.3.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
     "vite": "^5.4.10"
   }
 }
