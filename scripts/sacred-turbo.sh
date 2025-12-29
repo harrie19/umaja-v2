@@ -6,6 +6,12 @@
 PID=${SACRED_TURBO_PID:-14430}
 LOG_FILE="/var/log/umaja-guardian.log"
 CHECK_INTERVAL=60  # seconds
+
+# Restart command - MUST BE CONFIGURED FOR AUTO-RESTART TO WORK
+# Examples:
+#   RESTART_COMMAND="cd /path/to/app && npm start &"
+#   RESTART_COMMAND="pm2 restart app-name"
+#   RESTART_COMMAND="systemctl restart your-app"
 RESTART_COMMAND=""  # Set this to your actual restart command
 
 # Ensure log directory exists

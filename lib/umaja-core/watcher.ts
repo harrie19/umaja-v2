@@ -4,11 +4,11 @@
  * with John Cleese personality
  */
 
-import { JohnCleesePersonality } from './personality-config';
-import { SacredTurboMonitor } from './sacred-turbo-monitor';
-import { GaiaNetSync } from './gaianet-sync';
-import { BioMatrix } from './bio-matrix';
-import { SystemStatus, EventType } from './types';
+import { JohnCleesePersonality } from './personality-config.js';
+import { SacredTurboMonitor } from './sacred-turbo-monitor.js';
+import { GaiaNetSync } from './gaianet-sync.js';
+import { BioMatrix } from './bio-matrix.js';
+import { SystemStatus, EventType } from './types.js';
 
 export class UmajaGuardian {
   private processId: number;

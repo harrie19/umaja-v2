@@ -3,9 +3,10 @@
  * Plant nutrition tracking and milestone-based reminders
  */
 
-import { PlantNutrition, NutritionAlert, FeedingLog } from './types';
+import { PlantNutrition, NutritionAlert, FeedingLog } from './types.js';
 
 export class BioMatrix {
+  private static readonly MAX_FEEDING_HISTORY = 100;
   private feedingHistory: FeedingLog[] = [];
   private milestoneThreshold: number = 250; // Default €250 milestone
   private lastMilestoneAmount: number = 0;
@@ -80,9 +81,9 @@ export class BioMatrix {
 
     this.feedingHistory.push(log);
     
-    // Keep only last 100 entries to prevent memory bloat
-    if (this.feedingHistory.length > 100) {
-      this.feedingHistory = this.feedingHistory.slice(-100);
+    // Keep only last MAX_FEEDING_HISTORY entries to prevent memory bloat
+    if (this.feedingHistory.length > BioMatrix.MAX_FEEDING_HISTORY) {
+      this.feedingHistory = this.feedingHistory.slice(-BioMatrix.MAX_FEEDING_HISTORY);
     }
   }
 

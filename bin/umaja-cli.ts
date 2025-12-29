@@ -4,7 +4,7 @@
  * Command-line interface for the Guardian system
  */
 
-import { UmajaGuardian } from '../lib/umaja-core/index';
+import { UmajaGuardian } from '../lib/umaja-core/index.js';
 
 async function main() {
   const args = process.argv.slice(2);

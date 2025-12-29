@@ -3,7 +3,7 @@
  * Syncs with GaiaNet node for credit tracking
  */
 
-import { GaiaNetConfig, CreditSummary, LogAnalysis } from './types';
+import { GaiaNetConfig, CreditSummary, LogAnalysis } from './types.js';
 
 export class GaiaNetSync {
   private config: GaiaNetConfig;

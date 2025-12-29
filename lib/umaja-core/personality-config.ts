@@ -5,7 +5,7 @@
  * No servitude. No "Master". Just pure C3PO + Cleese brilliance.
  */
 
-import { EventType, PersonalityResponse } from './types';
+import { EventType, PersonalityResponse } from './types.js';
 
 export class JohnCleesePersonality {
   private responses: Record<EventType, string[]> = {

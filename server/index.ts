@@ -6,7 +6,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { UmajaGuardian } from '../lib/umaja-core';
+import { UmajaGuardian } from '../lib/umaja-core/index.js';
 
 dotenv.config();
 
@@ -18,12 +18,18 @@ app.use(cors());
 app.use(express.json());
 
 // Initialize the Guardian
-const guardian = new UmajaGuardian(
-  parseInt(process.env.SACRED_TURBO_PID || '14430')
-);
+const processId = parseInt(process.env.SACRED_TURBO_PID || '14430', 10);
+if (isNaN(processId)) {
+  console.error('Error: SACRED_TURBO_PID must be a valid number. Using default 14430.');
+}
+const guardian = new UmajaGuardian(isNaN(processId) ? 14430 : processId);
 
 // Initialize on server start
-guardian.initialize().catch(console.error);
+guardian.initialize().catch((error) => {
+  console.error('Failed to initialize UMAJA Guardian:', error);
+  console.error('Error details:', error instanceof Error ? error.message : 'Unknown error');
+  console.error('Please check your configuration and try again.');
+});
 
 /**
  * Root endpoint

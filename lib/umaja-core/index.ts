@@ -3,13 +3,13 @@
  * The John Cleese Protocol v4.2.2
  */
 
-export { UmajaGuardian } from './watcher';
-export { JohnCleesePersonality } from './personality-config';
-export { SacredTurboMonitor } from './sacred-turbo-monitor';
-export { GaiaNetSync } from './gaianet-sync';
-export { BioMatrix } from './bio-matrix';
+export { UmajaGuardian } from './watcher.js';
+export { JohnCleesePersonality } from './personality-config.js';
+export { SacredTurboMonitor } from './sacred-turbo-monitor.js';
+export { GaiaNetSync } from './gaianet-sync.js';
+export { BioMatrix } from './bio-matrix.js';
 
-export * from './types';
+export * from './types.js';
 
 // Default export
-export { UmajaGuardian as default } from './watcher';
+export { UmajaGuardian as default } from './watcher.js';
