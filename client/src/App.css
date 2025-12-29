@@ -1,38 +1,202 @@
 .App {
-  text-align: center;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: #eee;
+  font-family: 'Courier New', monospace;
+  padding: 2rem;
 }
 
-.App-header {
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 3rem;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+.umaja-container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.App-header h1 {
-  color: #333;
+/* Banner */
+.banner {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 8px;
   margin-bottom: 2rem;
-  font-size: 2.5rem;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
 }
 
-.bitcoin-price {
-  margin-top: 2rem;
+.banner-text {
+  color: #00ff00;
+  font-size: 0.85rem;
+  margin: 0;
+  text-align: center;
+  font-family: 'Courier New', monospace;
 }
 
-.bitcoin-price h2 {
-  color: #666;
-  font-size: 1.5rem;
+/* Loading & Error */
+.loading-message, .error-message {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.error-message h2 {
+  color: #ff6b6b;
   margin-bottom: 1rem;
 }
 
-.price {
-  font-size: 3rem;
+.error-message .hint {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+  font-family: monospace;
+}
+
+.error-message code {
+  color: #00ff00;
   font-weight: bold;
-  color: #f7931a;
+}
+
+.personality {
+  font-style: italic;
+  color: #aaa;
+  margin-top: 1rem;
+}
+
+/* Status Overview */
+.status-overview {
+  margin: 2rem 0;
+}
+
+.status-overview h2 {
+  text-align: center;
+  color: #00ff00;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.status-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.status-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 255, 0, 0.2);
+  border-color: rgba(0, 255, 0, 0.3);
+}
+
+.status-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.75rem;
+}
+
+.status-header .emoji {
+  font-size: 2rem;
+}
+
+.status-header h3 {
   margin: 0;
+  color: #00ff00;
+  font-size: 1.2rem;
+}
+
+.status-content p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.status-content strong {
+  color: #aaa;
+  margin-right: 0.5rem;
+}
+
+.status-content .small {
+  font-size: 0.85rem;
+  color: #888;
+  font-style: italic;
+}
+
+/* Personality Message */
+.personality-message {
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 4px solid #00ff00;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 8px;
+  font-style: italic;
+}
+
+.personality-message p {
+  margin: 0;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+/* System Info */
+.system-info {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.system-info p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.system-info strong {
+  color: #00ff00;
+}
+
+/* Footer */
+.footer {
+  margin-top: 3rem;
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footnote {
+  color: #888;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .App {
+    padding: 1rem;
+  }
+
+  .banner-text {
+    font-size: 0.6rem;
+  }
+
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .system-info {
+    flex-direction: column;
+    align-items: center;
+  }
 }
