@@ -1,0 +1,72 @@
+name: System Status Check
+
+on:
+  # Run every 30 minutes
+  schedule:
+    - cron: '*/30 * * * *'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  status-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Check system health
+        id: health
+        run: |
+          echo "🔍 Checking UMAJA system health..."
+          
+          # Check if Trevor script exists
+          if [ -f "scripts/trevor.py" ]; then
+            echo "✅ Trevor agent: Present"
+            echo "trevor_status=present" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Trevor agent: Missing"
+            echo "trevor_status=missing" >> $GITHUB_OUTPUT
+          fi
+          
+          # Check if ethical calculator exists
+          if [ -f "scripts/utils/ethical_calculator.py" ]; then
+            echo "✅ Ethical calculator: Present"
+            echo "calculator_status=present" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Ethical calculator: Missing"
+            echo "calculator_status=missing" >> $GITHUB_OUTPUT
+          fi
+          
+          # Check content directory
+          if [ -d "content/articles" ]; then
+            article_count=$(ls -1 content/articles/*.md 2>/dev/null | wc -l)
+            echo "✅ Content directory: $article_count articles"
+            echo "article_count=$article_count" >> $GITHUB_OUTPUT
+          else
+            echo "⚠️ Content directory: Not found"
+            echo "article_count=0" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Report latest article
+        run: |
+          if [ -d "content/articles" ]; then
+            latest=$(ls -t content/articles/*.md 2>/dev/null | head -1)
+            if [ -n "$latest" ]; then
+              echo "📄 Latest article: $(basename $latest)"
+              echo "Generated: $(stat -c %y "$latest" 2>/dev/null || stat -f %Sm "$latest")"
+            else
+              echo "📄 No articles found"
+            fi
+          fi
+      
+      - name: System status summary
+        run: |
+          echo "## 🎯 UMAJA System Status"
+          echo ""
+          echo "- Trevor Agent: ${{ steps.health.outputs.trevor_status }}"
+          echo "- Ethical Calculator: ${{ steps.health.outputs.calculator_status }}"
+          echo "- Articles Generated: ${{ steps.health.outputs.article_count }}"
+          echo ""
+          echo "Timestamp: $(date -u +"%Y-%m-%d %H:%M:%S UTC")"
