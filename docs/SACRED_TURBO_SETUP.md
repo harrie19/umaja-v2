@@ -79,7 +79,10 @@ SACRED_TURBO_PID=14430
 
 # GaiaNet Configuration
 GAIANET_NODE_URL=https://0x0df24a65419004cdec9dcdbd046f6609405c81db.gaia.domains
-GAIANET_BASE_CREDITS=1443000
+
+# IMPORTANT: These are promotional reward points, NOT withdrawable funds
+# Think of them like airline miles - valuable for network use, but not cash
+GAIANET_REWARD_POINTS=1443000
 
 # API Server Port
 PORT=3001

@@ -1,6 +1,18 @@
 /**
- * GaiaNet Integration
- * Syncs with GaiaNet node for credit tracking
+ * GaiaNet Reward Points Tracking
+ * 
+ * CRITICAL CLARIFICATION (Added 2025-12-30):
+ * These are PROMOTIONAL REWARD POINTS, not withdrawable funds.
+ * 
+ * Think of them like airline miles - valuable for network use,
+ * but NOT convertible to cash.
+ * 
+ * Current Balance: 1,443,000 points
+ * Liquid Value: €0
+ * Speculative Future Value: Unknown (depends on $GAIA token launch)
+ * 
+ * This affects the entire UMAJA financial model, which was originally
+ * built assuming €500-5,000 starting capital. The reality is pure sweat equity.
  */
 
 import { GaiaNetConfig, CreditSummary, LogAnalysis } from './types.js';
@@ -20,7 +32,8 @@ export class GaiaNetSync {
   }
 
   /**
-   * Fetch current credit balance from GaiaNet
+   * Fetch current reward point balance from GaiaNet
+   * Note: These are promotional points, not withdrawable currency
    */
   public async fetchCredits(): Promise<number> {
     try {
@@ -41,8 +54,8 @@ export class GaiaNetSync {
       
       return this.lastFetchedCredits;
     } catch (error) {
-      console.error('Error fetching GaiaNet credits:', error);
-      throw new Error(`Failed to fetch credits: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      console.error('Error fetching GaiaNet reward points:', error);
+      throw new Error(`Failed to fetch reward points: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }
 
@@ -73,7 +86,7 @@ export class GaiaNetSync {
   }
 
   /**
-   * Calculate accumulated credits since last sync
+   * Calculate accumulated reward points since last sync
    */
   public async calculateAccumulated(): Promise<CreditSummary> {
     const currentCredits = await this.fetchCredits();
@@ -95,7 +108,7 @@ export class GaiaNetSync {
   }
 
   /**
-   * Update base credits (for recalibration)
+   * Update base reward points (for recalibration)
    */
   public updateBaseCredits(newBase: number): void {
     this.config.baseCredits = newBase;

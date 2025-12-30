@@ -108,10 +108,11 @@ umaja-v2/
 - System resource tracking
 
 ### 2. GaiaNet Integration
-- Credit tracking (1,443,000+ base)
-- Node sync
+- **Reward point tracking** (1,443,000+ base points)
+- Note: Promotional points, not withdrawable currency (€0 liquid value)
+- Node sync capability
 - Transaction logging
-- Accumulated credit calculation
+- Accumulated point calculation
 
 ### 3. Bio-Matrix System
 - Plant nutrition reminders
@@ -143,8 +144,8 @@ umaja-v2/
 | GET | `/status` | Complete system overview |
 | GET | `/watcher` | Guardian health check |
 | POST | `/watcher` | Manual health check trigger |
-| GET | `/gaianet` | GaiaNet credit balance |
-| POST | `/gaianet` | Force credit sync |
+| GET | `/gaianet` | GaiaNet reward point balance |
+| POST | `/gaianet` | Force point sync |
 | GET | `/bio-reminder` | Plant feeding schedule |
 | POST | `/bio-reminder` | Log feeding completion |
 | POST | `/milestone` | Trigger milestone celebration |
@@ -159,9 +160,9 @@ Edit `.env.local`:
 # Process to monitor
 SACRED_TURBO_PID=14430
 
-# GaiaNet settings
+# GaiaNet settings (reward points, not withdrawable funds)
 GAIANET_NODE_URL=https://0x0df24a65419004cdec9dcdbd046f6609405c81db.gaia.domains
-GAIANET_BASE_CREDITS=1443000
+GAIANET_REWARD_POINTS=1443000
 
 # API server port
 PORT=3001
@@ -193,6 +194,7 @@ See [docs/SACRED_TURBO_SETUP.md](docs/SACRED_TURBO_SETUP.md) for details.
 - **[UMAJA Core Philosophy](docs/UMAJA_CORE_PHILOSOPHY.md)** - The vision and values
 - **[John Cleese Protocol](docs/JOHN_CLEESE_PROTOCOL.md)** - Personality guidelines
 - **[Sacred-Turbo Setup](docs/SACRED_TURBO_SETUP.md)** - Technical setup guide
+- **[Financial Reality](docs/FINANCIAL_REALITY.md)** - Transparent financial model (reward points clarification)
 
 ---
 
