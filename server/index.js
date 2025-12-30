@@ -80,7 +80,10 @@ app.post('/api/umaja-core/watcher', async (req, res) => {
 });
 /**
  * GET /api/umaja-core/gaianet
- * Get current GaiaNet credit balance
+ * Get current GaiaNet reward point balance
+ *
+ * IMPORTANT: These are promotional reward points, NOT withdrawable funds.
+ * Think of them like airline miles - valuable for network use, but not cash.
  */
 app.get('/api/umaja-core/gaianet', async (req, res) => {
     try {
@@ -103,7 +106,7 @@ app.get('/api/umaja-core/gaianet', async (req, res) => {
 });
 /**
  * POST /api/umaja-core/gaianet
- * Force credit sync
+ * Force GaiaNet reward point sync
  */
 app.post('/api/umaja-core/gaianet', async (req, res) => {
     try {
@@ -261,8 +264,8 @@ app.listen(PORT, () => {
     console.log('  GET  /api/umaja-core/status       - Complete system status');
     console.log('  GET  /api/umaja-core/watcher      - Guardian health check');
     console.log('  POST /api/umaja-core/watcher      - Manual health check');
-    console.log('  GET  /api/umaja-core/gaianet       - GaiaNet credits');
-    console.log('  POST /api/umaja-core/gaianet       - Force credit sync');
+    console.log('  GET  /api/umaja-core/gaianet       - GaiaNet reward points');
+    console.log('  POST /api/umaja-core/gaianet       - Force point sync');
     console.log('  GET  /api/umaja-core/bio-reminder  - Plant feeding schedule');
     console.log('  POST /api/umaja-core/bio-reminder  - Log feeding');
     console.log('  POST /api/umaja-core/milestone     - Milestone celebration');

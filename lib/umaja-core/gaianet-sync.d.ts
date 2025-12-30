@@ -1,6 +1,18 @@
 /**
- * GaiaNet Integration
- * Syncs with GaiaNet node for credit tracking
+ * GaiaNet Reward Points Tracking
+ *
+ * CRITICAL CLARIFICATION (Added 2025-12-30):
+ * These are PROMOTIONAL REWARD POINTS, not withdrawable funds.
+ *
+ * Think of them like airline miles - valuable for network use,
+ * but NOT convertible to cash.
+ *
+ * Current Balance: 1,443,000 points
+ * Liquid Value: €0
+ * Speculative Future Value: Unknown (depends on $GAIA token launch)
+ *
+ * This affects the entire UMAJA financial model, which was originally
+ * built assuming €500-5,000 starting capital. The reality is pure sweat equity.
  */
 import { GaiaNetConfig, CreditSummary, LogAnalysis } from './types.js';
 export declare class GaiaNetSync {
@@ -9,7 +21,8 @@ export declare class GaiaNetSync {
     private lastSyncTime;
     constructor(config?: Partial<GaiaNetConfig>);
     /**
-     * Fetch current credit balance from GaiaNet
+     * Fetch current reward point balance from GaiaNet
+     * Note: These are promotional points, not withdrawable currency
      */
     fetchCredits(): Promise<number>;
     /**
@@ -17,7 +30,7 @@ export declare class GaiaNetSync {
      */
     analyzeLogs(): Promise<LogAnalysis>;
     /**
-     * Calculate accumulated credits since last sync
+     * Calculate accumulated reward points since last sync
      */
     calculateAccumulated(): Promise<CreditSummary>;
     /**
@@ -25,7 +38,7 @@ export declare class GaiaNetSync {
      */
     getNodeUrl(): string;
     /**
-     * Update base credits (for recalibration)
+     * Update base reward points (for recalibration)
      */
     updateBaseCredits(newBase: number): void;
     /**
