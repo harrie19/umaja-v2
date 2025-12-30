@@ -5,7 +5,6 @@ Trevor generates daily philosophical/technical articles about AI ethics,
 autonomous systems, and Bahá'í-inspired principles.
 """
 
-import os
 import sys
 import json
 import argparse

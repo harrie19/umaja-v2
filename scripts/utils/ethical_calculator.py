@@ -5,7 +5,7 @@ Calculates 19% allocation on surplus above €6,500 threshold.
 Supports opt-in/opt-out logic for ethical giving.
 """
 
-from typing import Dict, Optional
+from typing import Dict, Optional, Any
 from datetime import datetime
 
 
@@ -113,7 +113,7 @@ class EthicalCalculator:
         self,
         transactions: list[Dict[str, float]],
         user_opted_in: bool = False
-    ) -> Dict[str, any]:
+    ) -> Dict[str, Any]:
         """
         Calculate allocations for multiple transactions.
         

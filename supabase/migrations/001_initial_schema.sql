@@ -2,7 +2,8 @@
 -- Version: 001
 -- Created: 2025-12-30
 
--- Enable UUID extension
+-- Enable UUID extension (legacy - gen_random_uuid() is built-in for PostgreSQL 13+)
+-- For older PostgreSQL versions, this enables UUID generation
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- Create updated_at trigger function

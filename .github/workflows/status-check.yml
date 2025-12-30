@@ -11,6 +11,8 @@ on:
 jobs:
   status-check:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read   # Required to checkout repository
     
     steps:
       - name: Checkout repository

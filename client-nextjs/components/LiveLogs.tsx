@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 
 export interface LogEntry {
+  id: string
   timestamp: string
   agent: string
   message: string
@@ -26,18 +27,21 @@ const typeEmojis = {
 export default function LiveLogs() {
   const [logs, setLogs] = useState<LogEntry[]>([
     {
+      id: 'log-1',
       timestamp: new Date().toISOString(),
       agent: 'System',
       message: 'UMAJA Dashboard initialized',
       type: 'info',
     },
     {
+      id: 'log-2',
       timestamp: new Date(Date.now() - 120000).toISOString(),
       agent: 'Trevor',
       message: 'Article generated successfully for day 1',
       type: 'success',
     },
     {
+      id: 'log-3',
       timestamp: new Date(Date.now() - 180000).toISOString(),
       agent: 'Trevor',
       message: 'Ethical allocation calculated: €23.46',
@@ -91,9 +95,9 @@ export default function LiveLogs() {
             <p>No logs yet. Waiting for agent activity...</p>
           </div>
         ) : (
-          logs.map((log, index) => (
+          logs.map((log) => (
             <div
-              key={index}
+              key={log.id}
               className={`border rounded-lg p-3 ${typeColors[log.type]} transition-all duration-200 hover:shadow-md`}
             >
               <div className="flex items-start justify-between gap-2">

@@ -21,6 +21,9 @@ on:
 jobs:
   generate-content:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required to commit and push generated content
+      actions: read    # Required to read workflow metadata
     
     steps:
       - name: Checkout repository
