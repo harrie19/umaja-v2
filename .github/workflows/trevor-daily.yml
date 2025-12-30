@@ -1,0 +1,75 @@
+name: Trevor Daily Content Generation
+
+on:
+  # Run daily at 8:00 UTC
+  schedule:
+    - cron: '0 8 * * *'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+    inputs:
+      day:
+        description: 'Specific day to generate (1-365, leave empty for current day)'
+        required: false
+        type: string
+      test_mode:
+        description: 'Run in test mode'
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  generate-content:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required to commit and push generated content
+      actions: read    # Required to read workflow metadata
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r scripts/requirements.txt
+      
+      - name: Run Trevor Agent
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ "${{ github.event.inputs.test_mode }}" = "true" ] || [ -z "${{ secrets.OPENAI_API_KEY }}" ]; then
+            echo "Running in test mode..."
+            python scripts/trevor.py --test ${{ github.event.inputs.day && format('--day {0}', github.event.inputs.day) || '' }}
+          else
+            echo "Running in production mode..."
+            python scripts/trevor.py ${{ github.event.inputs.day && format('--day {0}', github.event.inputs.day) || '' }}
+          fi
+      
+      - name: Commit generated content
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "Trevor Agent[bot]"
+          git add content/articles/
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "🤖 Trevor: Daily content generation - $(date +'%Y-%m-%d')"
+            git push
+          fi
+      
+      - name: Upload execution logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trevor-logs-${{ github.run_number }}
+          path: content/articles/*.json
+          retention-days: 30
