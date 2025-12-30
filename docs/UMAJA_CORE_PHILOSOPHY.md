@@ -68,9 +68,10 @@ guardian.respond('payout_success', { amount });
 
 **Economic Transparency**:
 - All transactions logged
-- GaiaNet credit tracking (1,443,000+ and counting)
+- GaiaNet reward point tracking (1,443,000+ points - €0 liquid value)
 - Real-time sync with external nodes
 - Personality-enhanced transaction commentary
+- **Note**: Reward points are promotional credits, not withdrawable currency
 
 ---
 

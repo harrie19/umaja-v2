@@ -89,12 +89,15 @@ function App() {
                 <div className="status-card">
                   <div className="status-header">
                     <span className="emoji">💰</span>
-                    <h3>GaiaNet Credits</h3>
+                    <h3>GaiaNet Reward Points</h3>
                   </div>
                   <div className="status-content">
                     <p><strong>Current:</strong> {guardianStatus.gaianet.credits?.toLocaleString() || 'N/A'}</p>
                     <p><strong>Accumulated:</strong> {guardianStatus.gaianet.accumulated?.toLocaleString() || 'N/A'}</p>
                     <p className="small">Last sync: {guardianStatus.gaianet.lastSync ? new Date(guardianStatus.gaianet.lastSync).toLocaleTimeString() : 'Never'}</p>
+                    <p className="small note" style={{marginTop: '8px', fontStyle: 'italic', color: '#888'}}>
+                      Note: Promotional points, not withdrawable funds
+                    </p>
                   </div>
                 </div>
 

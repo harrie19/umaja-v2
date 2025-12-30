@@ -53,16 +53,17 @@ bash scripts/sacred-turbo.sh
 ### 3. **GaiaNet Integration**
 **File**: `lib/umaja-core/gaianet-sync.ts`
 
-Tracks credits from GaiaNet node:
-- ✅ Base credits: 1,443,000
-- ✅ Accumulated credit calculation
+Tracks reward points from GaiaNet node:
+- ✅ Base reward points: 1,443,000 (€0 liquid value)
+- ✅ Note: Promotional points, not withdrawable currency
+- ✅ Accumulated point calculation
 - ✅ Node URL: `0x0df24a65419004cdec9dcdbd046f6609405c81db.gaia.domains`
 - ✅ Real-time sync capability
 
 **API:**
 ```bash
 curl http://localhost:3001/api/umaja-core/gaianet
-# Returns: Current credits + personality response
+# Returns: Current reward points + personality response
 ```
 
 ---
@@ -99,8 +100,8 @@ Built into all transaction handling:
 GET  /api/umaja-core/status       - Complete system overview
 GET  /api/umaja-core/watcher      - Guardian health check
 POST /api/umaja-core/watcher      - Manual health check
-GET  /api/umaja-core/gaianet       - GaiaNet credits
-POST /api/umaja-core/gaianet       - Force credit sync
+GET  /api/umaja-core/gaianet       - GaiaNet reward points
+POST /api/umaja-core/gaianet       - Force point sync
 GET  /api/umaja-core/bio-reminder  - Plant feeding schedule
 POST /api/umaja-core/bio-reminder  - Log feeding
 POST /api/umaja-core/milestone     - Milestone celebration
@@ -198,9 +199,9 @@ $ curl http://localhost:3001/api/umaja-core/status
 
 $ curl http://localhost:3001/api/umaja-core/gaianet
 {
-  "personality": "GaiaNet credits updated. We're at 1,443,517..."
+  "personality": "GaiaNet reward points updated. We're at 1,443,517... Not cash, mind you."
 }
-✅ PASSED (credit tracking works)
+✅ PASSED (point tracking works)
 
 $ curl -X POST http://localhost:3001/api/umaja-core/milestone \
   -d '{"amount": 250, "type": "payout"}'
@@ -275,7 +276,7 @@ Configuration:
 | No servile language | ✅ | Zero "Master" references |
 | Process monitoring works | ✅ | PID tracking operational |
 | Auto-restart on crash | ✅ | Configurable restart command |
-| GaiaNet credit tracking | ✅ | 1.4M+ base credits |
+| GaiaNet reward point tracking | ✅ | 1.4M+ points (€0 liquid) |
 | Bio-Matrix milestone triggers | ✅ | Links economics to biology |
 | All API routes functional | ✅ | 8 endpoints with personality |
 | Shell scripts executable | ✅ | Tested on Linux |

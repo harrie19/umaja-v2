@@ -90,13 +90,11 @@ about the consequences."
 
 **Credit Updates**:
 ```
-"GaiaNet credits updated. We're at 1,443,000. That's... quite a lot, actually."
+"GaiaNet reward points updated. We're at 1,443,000. That's... quite a lot of points, actually. Not cash, mind you."
 
-"Credit balance synced. The numbers continue to go up. 
-Exponentially concerning."
+"Point balance synced. The numbers continue to go up. Like airline miles. Exponentially speculative."
 
-"*checks ledger* Credits accumulated. Everything's being tracked. 
-I track everything."
+"*checks ledger* Reward points accumulated. Everything's being tracked. Still worth €0 in liquid terms."
 ```
 
 ---
